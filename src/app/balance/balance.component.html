@@ -1,0 +1,31 @@
+<section class="container">
+    <div class="totalBalance">
+    <p>
+      your balance:
+    </p>
+      <h1>
+        {{balance}}$
+      </h1>
+    <p>
+      {{gainMessage}} {{delta}}$
+    </p>
+
+    <button (click)="toggleDetails()">{{button}}</button>
+  </div>
+  <div *ngIf="showDetails" class="moreDetails">
+      <h3 *ngIf="!hasStocks">no details yet..</h3>
+      <table *ngIf="hasStocks" class="detailsTable">
+        <tr>
+          <th>stock-name</th><th>gain/loss</th>
+          <th>gain if sold now</th>
+        </tr>
+        <tr *ngFor="let stk of stocks">
+          <td>{{stk.name}}</td>
+          <td>{{calcGain(stk)}}$</td>
+          <td>{{stk.amount*(stk.value-stk.averagePurchasePrice)}}$</td>
+        </tr>
+      </table>
+  </div>
+</section>
+
+

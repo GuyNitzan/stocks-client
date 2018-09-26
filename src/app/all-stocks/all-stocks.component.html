@@ -1,0 +1,29 @@
+<table class="zui-table zui-table-zebra zui-table-horizontal">
+  <tr>
+    <th>stock-name</th><th>current-value</th><th>open-value</th>
+    <th>last-value</th><th>change</th><th>trend</th>
+  </tr>
+  <tr *ngFor="let stk of stocks">
+    <td>{{stk.name}}</td><td>{{stk.value}}$</td><td>{{stk.openValue}}$</td><td>{{stk.lastValue}}$</td><td>{{percent(stk)}}%</td>
+    <td *ngIf= "stk.value >= stk.lastValue; then upSymbol else downSymbol"></td>
+    <td>
+        <ng-template #upSymbol><img src= 'https://upload.wikimedia.org/wikipedia/commons/5/50/Green_Arrow_Up.svg' style="width:25px; padding:15%">
+        </ng-template>
+        <ng-template #downSymbol><img src='https://upload.wikimedia.org/wikipedia/commons/0/04/Red_Arrow_Down.svg' style="width:25px; padding:15%">
+        </ng-template>
+    </td>
+    
+    <td>
+      <button [routerLink]="['/', 'buy-sell', 'buy', stk.name]"
+      routerLinkActive = "active">
+        buy
+      </button>
+      &nbsp;
+      <button [routerLink]="['/', 'buy-sell', 'sell', stk.name]"
+      routerLinkActive = "active">
+        sell
+      </button>
+    </td>
+  </tr>
+</table>
+<h5>price change in {{timeUntillUpdate}}</h5>    

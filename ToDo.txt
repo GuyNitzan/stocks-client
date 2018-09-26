@@ -1,0 +1,6 @@
+
+Angular:
+
+- spec tests
+- balance details update
+- design

@@ -1,0 +1,8 @@
+.amount {
+    display: flex;
+    flex-direction: column;
+}
+  
+.amount > * {
+    width: 20%;
+}

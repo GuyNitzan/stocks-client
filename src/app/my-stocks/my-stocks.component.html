@@ -1,0 +1,15 @@
+<h3>my stocks: </h3>
+<table *ngIf="hasStocks" class="zui-table zui-table-zebra zui-table-horizontal">
+  <tr>
+    <th>stock name</th><th>amount</th><th>current-value</th><th>purchase-price (average)</th>
+    <th>gain if sold now</th>
+  </tr>
+  <tr *ngFor="let stk of stocks">
+    <td>{{stk.name}}</td><td>{{stk.amount}}</td><td>{{stk.value}}$</td>
+    <td>{{stk.averagePurchasePrice}}$</td>
+    <td>{{stk.amount*(stk.value-stk.averagePurchasePrice)}}$</td>
+  </tr>
+</table>
+
+<h2 *ngIf="!hasStocks"> You don't have any stocks..</h2>
+

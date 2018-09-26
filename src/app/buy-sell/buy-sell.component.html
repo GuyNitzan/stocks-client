@@ -1,0 +1,30 @@
+<form *ngIf="formBuilt" [formGroup]="bsForm" (ngSubmit)="send()">
+  <div class="form-group">
+      <mat-radio-group formControlName="action">
+        <mat-radio-button value="buy" (click)="updateAction('buy')">buy &nbsp; </mat-radio-button>
+        <mat-radio-button value="sell" (click)="updateAction('sell')">sell </mat-radio-button>
+      </mat-radio-group>
+    <br>
+    <label for="stock">stock</label>
+    <mat-form-field>
+      <mat-select id='stock' formControlName="stock">
+        <mat-option *ngFor="let s of allStocks" [value]="s.name" (click)="updateStockName(s.name)">
+          :    {{s.name}}
+        </mat-option>
+      </mat-select>
+      <mat-error>stock field is required</mat-error>
+    </mat-form-field>
+    <br>price:
+    <mat-form-field>
+        <input matInput type="text" formControlName="price">
+    </mat-form-field>
+    <div>
+      <mat-form-field>
+        <input matInput type="number" placeholder="amount of stocks" formControlName="amount">
+        <mat-error *ngIf="!enoughStocks">you don't have enough stocks</mat-error>
+        <mat-error *ngIf="!enoughMoney">you don't have enough money :(</mat-error>
+      </mat-form-field>
+    </div>
+    <input type="submit" value="submit" [disabled]="!bsForm.valid" />
+  </div>
+</form>

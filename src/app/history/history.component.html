@@ -1,0 +1,16 @@
+<h3>Transaction History:</h3>
+          
+<table *ngIf="hasTransactions" class="zui-table zui-table-zebra zui-table-horizontal">
+  <tr>
+    <th>stock name</th><th>amount</th><th>purchase-price</th><th>buy/sell</th><th>date</th>
+  </tr>
+  <tr *ngFor= "let h of history">
+    <th>{{h.stockName}}</th>
+    <th>{{h.amount}}</th>
+    <th>{{h.price}}$</th>
+    <th>{{h.type}}</th>
+    <th>{{h.date}}</th>
+  </tr>
+</table>
+
+<h2 *ngIf="!hasTransactions">You didn't execute any transactions yet</h2>

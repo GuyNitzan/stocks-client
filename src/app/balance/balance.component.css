@@ -1,0 +1,16 @@
+.container {
+    margin: auto;
+    padding: 10px;
+}
+.totalBalance {
+    width: 15%;
+    float: left;
+}
+.moreDetails {
+    margin-left: 30%;
+}
+
+.detailsTable {
+    text-align: center;
+    width: 80%;
+}
